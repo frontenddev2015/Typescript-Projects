@@ -1,0 +1,23 @@
+import fs from 'fs';
+import { MatchReader } from './MatchReader';
+import { CsvFileReader } from './CsvFileReader';
+
+// Create an object that satisfy DataReader interface
+const csvFileReader = new CsvFileReader('football.csv');
+
+// Create an instance of MatchReader and passin something satisfying the DataReader interface
+const matchReader = new MatchReader(csvFileReader);
+
+matchReader.load();
+
+console.log(matchReader.matches);
+
+// typeassertion - to override the behaviour of the tyepscript
+
+// enum MatchResult = {
+//   HomeWin = 'H',
+//   AwayWin = 'A',
+//   Draw = 'D'
+// }
+
+// instead of the 'H' as a type string, defining as 'H' as MatchResult called as type assertion
